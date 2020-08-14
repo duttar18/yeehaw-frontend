@@ -14,8 +14,8 @@ const Welc = styled.div`
 const Shooter = styled.img`
     height: 400px;
     position: fixed;
-    margin-top: 700px;
-    margin-left: 400px;
+    margin-top: 60vh;
+    margin-left: 40vh;
 
 `;
 export class Welcome extends Component {
@@ -24,7 +24,7 @@ export class Welcome extends Component {
             <Welc>
                 <Shooter src={require("./Assets/Shooter.gif")} />
                 <Menu />
-                
+
             </Welc>
         );
     }
