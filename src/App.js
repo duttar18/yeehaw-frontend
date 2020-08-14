@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Welcome from "./Welcome";
+import { BrowserRouter,Switch,Route } from "react-router-dom";
 
 function App() {
   fetch("http://yeehaw-backend.herokuapp.com/", {
@@ -15,9 +16,11 @@ function App() {
     })
 
   return (
-    <div>
-      <Welcome />
-    </div>
+    <BrowserRouter>
+      <Switch >
+        <Route path="/" component={Welcome} />
+      </Switch>
+    </BrowserRouter>
   );
 }
 
