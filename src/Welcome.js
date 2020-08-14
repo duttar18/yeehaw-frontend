@@ -5,8 +5,10 @@ import Menu from './Menu';
 
 
 const Welc = styled.div`
-    width: 100%;
     display: flex; 
+    justify-content: center;
+    align-items: center;
+    align-content: center;
     height: 100vh;
     background-image: url(${img});
     background-size: cover
@@ -16,16 +18,16 @@ const Shooter = styled.img`
     position: fixed;
     margin-top: 60vh;
     margin-left: 40vh;
-
 `;
 export class Welcome extends Component {
     render() {
         return (
-            <Welc>
+            <div>
                 <Shooter src={require("./Assets/Shooter.gif")} />
-                <Menu />
-
-            </Welc>
+                <Welc>
+                    <Menu />
+                </Welc>
+            </div>
         );
     }
 }

@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import styled from "styled-components";
 
 const Flexbox = styled.div`
-    width: 100%;
     display: flex; 
     flex-direction: column;
     height: 50%
-    justify-content: center; 
+    align-items: center; 
+    align-content: center; 
 `;
 const Button = styled.a`
     background-color: black;
@@ -19,7 +19,8 @@ const Button = styled.a`
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
-    max-width: 200px;
+    width: 200px;
+    max-width: 300px;
 `;
 
 
