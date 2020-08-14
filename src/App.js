@@ -1,6 +1,8 @@
 import React from 'react';
 import './App.css';
 import Welcome from "./Welcome";
+import About from "./About";
+import Play from "./Play";
 import { BrowserRouter,Switch,Route } from "react-router-dom";
 
 function App() {
@@ -18,7 +20,9 @@ function App() {
   return (
     <BrowserRouter>
       <Switch >
-        <Route path="/" component={Welcome} />
+        <Route exact path="/" component={Welcome} />
+        <Route path="/about" component={About} />
+        <Route path="/play" component={Play} />
       </Switch>
     </BrowserRouter>
   );

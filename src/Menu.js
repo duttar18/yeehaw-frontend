@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import {Link} from "react-router-dom";
 
 const Flexbox = styled.div`
     display: flex; 
@@ -28,9 +29,8 @@ export class Menu extends Component {
     render() {
         return (
             <Flexbox>
-                <Button>Play</Button>
-                <Button>About</Button>
-                <Button>Tutorial</Button>
+                <Link to="/play"><Button>Play</Button></Link>
+                <Link to="/about"><Button>About</Button></Link>
             </Flexbox>
         );
     }
