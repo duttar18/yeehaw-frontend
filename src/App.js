@@ -3,6 +3,17 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  fetch("http://yeehaw-backend.herokuapp.com/", {
+    method: "GET",
+  })
+  .then((response) => {
+      if (!response.ok) throw Error(response.statusText);
+      return response.json();
+  })
+  .then((data) => {
+      console.log(data)
+  })
+
   return (
     <div className="App">
       <header className="App-header">
