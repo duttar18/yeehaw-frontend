@@ -19,10 +19,17 @@ const Shooter = styled.img`
     margin-top: 60vh;
     margin-left: 40vh;
 `;
+const Player = styled.audio`
+    position: fixed; 
+    width: 300px;
+    margin: 20px;
+
+`;
 export class Welcome extends Component {
     render() {
         return (
             <div>
+                <Player src={require("./Assets/music.mp3")} controls autoplay preload="auto" loop></Player>
                 <Shooter src={require("./Assets/Shooter.gif")} />
                 <Welc>
                     <Menu />
