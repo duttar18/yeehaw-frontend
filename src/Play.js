@@ -3,12 +3,26 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import { withRouter, Router, NavLink, Route, Switch, useLocation } from 'react-router-dom';
 
-function Play() {
-  return (
-      <div>professional resumesss
+class Play extends React.Component {
+  constructor(props) {
+      // Initialize mutable state
+      super(props);
+      this.state = {
+          id: 0,
 
-      </div>
-  );
+      };
+  }
+  componentDidMount() {
+      
+  }
+
+  render() {
+      return (
+          <div>
+              hi
+          </div>
+      );
+  }
 }
 
 

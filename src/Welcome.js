@@ -14,10 +14,12 @@ const Welc = styled.div`
     background-size: cover
 `;
 const Shooter = styled.img`
-    height: 400px;
-    position: fixed;
-    margin-top: 60vh;
-    margin-left: 40vh;
+    width: 30%;
+    height: auto;
+    min-width: 200px;
+    position: absolute;
+    bottom: 10vh;
+    left: 10vh;
 `;
 const Player = styled.audio`
     position: fixed; 
