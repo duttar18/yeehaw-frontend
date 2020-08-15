@@ -36,6 +36,7 @@ export class Menu extends Component {
                 <Title>Outlaws</Title>
                 <Link to="/play"><Button>Play</Button></Link>
                 <Link to="/about"><Button>About</Button></Link>
+                <Link to="/pick"><Button>Settings</Button></Link>
             </Flexbox>
         );
     }
