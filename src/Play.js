@@ -1,12 +1,18 @@
 
-import React from 'react';
-import {Link} from "react-router-dom";
-import { withRouter, Router, NavLink, Route, Switch, useLocation } from 'react-router-dom';
+import React, { Component } from 'react';
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 
-function Play() {
-  return (
-      <div>professional resumesss</div>
-  );
+
+const Loading = styled.img`
+    max-width: 750px;
+`;
+class Play extends Component {
+  render() {
+    return (
+      <div><Loading src={require("./Assets/Loading.gif")} /></div>
+    )
+  }
 }
 
 
