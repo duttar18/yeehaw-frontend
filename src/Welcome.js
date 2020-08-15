@@ -27,6 +27,7 @@ const Player = styled.audio`
     margin: 20px;
 
 `;
+
 export class Welcome extends Component {
     render() {
         return (
@@ -34,7 +35,7 @@ export class Welcome extends Component {
                 <Player src={require("./Assets/music.mp3")} controls autoplay preload="auto" loop></Player>
                 <Shooter src={require("./Assets/Shooter.gif")} />
                 <Welc>
-                    <Menu />
+                   
                 </Welc>
             </div>
         );
