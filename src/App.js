@@ -87,11 +87,12 @@ class App extends React.Component {
     super(props);
     this.state = {
         id: 0,
-        name: "player"
+        name: "player",
+        apiUrl: "http://yeehaw-backend.herokuapp.com"
     };
   }
   componentDidMount() {
-    fetch("http://yeehaw-backend.herokuapp.com/createPlayer", {
+    fetch(this.state.apiUrl+"/createPlayer", {
       method: "POST",
       headers:{
           'Content-Type' : 'application/json'
@@ -120,7 +121,7 @@ class App extends React.Component {
           <Switch >
             <Route exact path="/" component={Menu} />
             <Route path="/about" component={About} />
-            <Route path="/play" component={Play} />
+            <Route path="/play" component={() => <Play id={this.state.id} apiUrl={this.state.apiUrl} />} />
           </Switch>
         </Welc>
       </BrowserRouter>
