@@ -3,6 +3,7 @@ import './App.css';
 import About from "./About";
 import Play from "./Play";
 import Menu from "./Menu";
+import Pick from "./Pick";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import styled from "styled-components";
 import img from './Assets/Background.png';
@@ -113,7 +114,6 @@ class App extends React.Component {
       <BrowserRouter>
         {this.state.visible ? <Player src={require("./Assets/music.mp3")} controls autoplay preload="auto" loop /> : null}
         {this.state.visible ? <Button onClick={() => { this.setState({ visible: false }) }}>Hide</Button> : <Button2 onClick={() => { this.setState({ visible: true }) }}>Music</Button2>}
-        <Shooter src={require("./Assets/Shooter.gif")} />
         <Link to="/"><HomeButton>Home</HomeButton></Link>
 
         <Welc >
@@ -121,6 +121,7 @@ class App extends React.Component {
             <Route exact path="/" component={Menu} />
             <Route path="/about" component={About} />
             <Route path="/play" component={Play} />
+            <Route path="/pick" component={Pick} />
           </Switch>
         </Welc>
       </BrowserRouter>
