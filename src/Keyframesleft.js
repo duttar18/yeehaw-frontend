@@ -2,7 +2,7 @@ import styled, { keyframes } from 'styled-components';
 
 export const keyFrameLeft = keyframes`
     0% { 
-        height: 200px;
+        height: 10%;
         left: 45%;
     }
     100% { 
