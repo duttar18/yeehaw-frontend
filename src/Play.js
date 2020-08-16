@@ -187,7 +187,7 @@ class Play extends React.Component {
                 {this.state.won ?
                   <>
                     <Text> You Won </Text>
-                    {this.state.gender == "M" ?
+                    {this.state.gender === "M" ?
                       <>
                         <FemaleDeath src={require("./Assets/GirlDeathLeft.gif")} />
                         <MaleStandNoAn src={require("./Assets/ManStandRight.gif")} />
@@ -199,7 +199,7 @@ class Play extends React.Component {
                     }
                   </> :
                   <><Text> You Didn't Win </Text>
-                    {this.state.gender == "M" ?
+                    {this.state.gender === "M" ?
                       <>
                         <MaleDeath src={require("./Assets/ManDeathRight.gif")} />
                         <FemaleStandNoAn src={require("./Assets/GirlStandLeft.gif")} />
@@ -217,7 +217,7 @@ class Play extends React.Component {
 
                 <FemaleShooterWalking src={require("./Assets/GirlWalkingRight.gif")} />
                 <FemaleStand src={require("./Assets/GirlStandLeft.gif")} />
-                {this.state.gender == "M" ?
+                {this.state.gender === "M" ?
                   <>
                     <MaleShooterWalking src={require("./Assets/ManWalkingLeft.gif")} />
                     <MaleStand src={require("./Assets/ManStandRight.gif")} />

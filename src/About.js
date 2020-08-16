@@ -17,8 +17,8 @@ const Rules = styled.div`
     background-size: cover;
 `;
 const Button = styled.button`
-    margin-left: 600px;
-    margin-top: 20px;
+    margin-left: 50%;
+    margin-top: 10%;
     background-color: black;
     border: none;
     color: white;
@@ -37,10 +37,10 @@ function About() {
     <Rules>
       <h1> About </h1>
       <h3>1. Outlaw is a Reaction Time Based game where you steal and collect money from people you beat in a 1v1 standoff!</h3>
-      <h3>2. Click the space button as soon as you see <span style={{ color: 'green' }}>GREEN</span>!</h3>
+      <h3>2. Click the button as soon as you see it turn to <span style={{ color: 'green' }}>SHOOT</span>!</h3>
       <h3>3. If you win, you take a portion of your opponents money!</h3>
       <h3>4. If you lose, you lost a portion of yours. The Wild West is a cruel and dangerous place :(</h3>
-      <h3>5. Each transaction is taken recorded with Blockchain technology, so nobody will be able to cheat how much money they have! </h3>
+      <h3>5. Each transaction is recorded with Blockchain, so nobody will be able to cheat how much money they have! </h3>
       <h3>Credits: Daniel Zheng, Raul Dutta, James Li</h3>
       <h3>Created for Yeehaw Hacks MLH Hackathon 2020</h3>
       <Link to="/"><Button> Return </Button></Link>

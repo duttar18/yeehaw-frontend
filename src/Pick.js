@@ -6,17 +6,16 @@ import img from './Assets/Board.png';
 
 const Flexbox = styled.div`
     display: flex; 
-    height: 50%
+    height: 50%;
     justify-content: space-around;
     align-items: center;
     background-repeat: no-repeat;
-    height: 50%;
     width: 50%;
     background-image: url(${img});
     background-size: cover;
+    min-width: 1200px;
 `;
 const Character = styled.div`
-    margin: auto; 
     display: flex; 
     flex-direction: column;
 `;
@@ -36,15 +35,11 @@ const Button = styled.a`
 `;
 
 const Shooter = styled.img`
-    height: 400px;
- 
- 
+    height: 20%;
 `;
 
 const FemaleShooter = styled.img`
-    height: 400px;
-  
- 
+    height: 20%;
 `;
 
 
