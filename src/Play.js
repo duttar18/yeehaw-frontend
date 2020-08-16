@@ -59,7 +59,6 @@ function timeout(ms) { //pass a time in milliseconds to this function
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 class Play extends React.Component {
-
   constructor(props) {
     // Initialize mutable state
     super(props);
@@ -83,6 +82,9 @@ class Play extends React.Component {
     this.shoot = this.shoot.bind(this);
   }
   shoot() {
+    const audioEl = document.getElementsByClassName("audio-element")[0]
+    audioEl.volume = 0.5;
+    audioEl.play()
     let thistime = Date.now() - this.state.startTime.getTime()
     fetch(this.props.apiUrl + "/deathmatch", {
       method: "POST",
@@ -134,7 +136,7 @@ class Play extends React.Component {
   render() {
     return (
       <>
-        {this.state.finding ?
+        {!this.state.finding ?
           <div><Searching src={require("./Assets/Searching.gif")} /></div> :
           <div>
             {this.state.gameOver ?
@@ -153,13 +155,16 @@ class Play extends React.Component {
 
                 <MaleStand src={require("./Assets/ManStandRight.gif")} />
 
-                {this.state.shoot ?
+                {!this.state.shoot ?
                   <Button onClick={this.shoot}>Shoot!</Button>
                   :
                   <Button>Don't Shoot</Button>
                 }
               </>
             }
+            <audio className="audio-element">
+              <source src={require("./Assets/gunshot.mp3")}></source>
+            </audio>
           </div>
 
 
