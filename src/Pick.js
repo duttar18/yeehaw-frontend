@@ -11,8 +11,8 @@ const Flexbox = styled.div`
     background-repeat: no-repeat;
     background-image: url(${img});
     background-size: cover;
-    width: 1567px;
-    height: 1002px;
+    width: 940px;
+    height: 601px;
 `;
 const Character = styled.div`
     display: flex; 
@@ -28,18 +28,35 @@ const Button = styled.a`
     display: inline-block;
     font-size: 16px;
     cursor: pointer;
-    width: 200px;
+    width: 100px;
     margin-left: 100px;
     max-width: 300px;
     margin-top: 50px;
 `;
-
+const Button2 = styled.a`
+    background-color: black;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Pangolin', cursive;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    width: 50px;
+    max-width: 300px;
+    margin-top: 50px;
+    margin-right: 50px;
+`;
+const In = styled.input`
+    width: 50px;
+`;
 const Shooter = styled.img`
-    height: 10%;
+    height: 400px;
 `;
 
 const FemaleShooter = styled.img`
-    height: 10%;
+    height: 400px;
 `;
 
 
@@ -102,16 +119,16 @@ class Menu extends React.Component {
         return (
             <Flexbox>
                 <Character>
-                    <Shooter src={require("./Assets/Shooter.gif")} />
+                    <Shooter src={require("./Assets/SmallManShoot.gif")} />
                     <Button onClick={() => { this.setState({ gender: "M" }) }} className={this.state.gender === "M" ? "selected" : {}}>Cowboy</Button>
                 </Character>
                 <Character>
-                    <FemaleShooter src={require("./Assets/GirlShooter.gif")} />
+                    <FemaleShooter src={require("./Assets/SmallGirlShoot.gif")} />
                     <Button onClick={() => { this.setState({ gender: "F" }) }} className={this.state.gender === "F" ? "selected" : {}}>Cowgirl</Button>
                 </Character>
                 <Character>
-                    <input type="text" value={this.state.name} onChange={this.handleChange} />
-                    <Button onClick={this.save}>Save</Button>
+                    <In type="text" value={this.state.name} onChange={this.handleChange} />
+                    <Button2 onClick={this.save}>Save</Button2>
                 </Character>
             </Flexbox>
         );
