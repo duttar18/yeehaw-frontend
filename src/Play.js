@@ -5,7 +5,7 @@ import styled from "styled-components";
 import Time from 'react-time';
 
 
-const Loading = styled.img`
+const Searching = styled.img`
     max-width: 750px;
 `;
 function timeout(ms) { //pass a time in milliseconds to this function
@@ -34,7 +34,7 @@ class Play extends React.Component {
   }
   shoot() {
     this.setState({ time: (((new Date()) - this.state.startTime) / 1000.0) })
-    fetch(this.props.apiUrl+"/deathmatch", {
+    fetch(this.props.apiUrl + "/deathmatch", {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
@@ -56,7 +56,7 @@ class Play extends React.Component {
   }
   componentDidMount() {
     console.log(this.props.id)
-    fetch(this.props.apiUrl+"/finding", {
+    fetch(this.props.apiUrl + "/finding", {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
@@ -65,43 +65,43 @@ class Play extends React.Component {
         "id": this.props.id
       })
     })
-    .then((response) => {
-      if (!response.ok) throw Error(response.statusText);
-      return response.json();
-    })
-    .then((data) => {
-      this.setState(data);
-      this.setState({ finding: false });
-      return data.waittime;
-    })
-    .then(timeout)
-    .then(() => {
-      this.setState({ shoot: true, startTime: new Date() })
-    })
+      .then((response) => {
+        if (!response.ok) throw Error(response.statusText);
+        return response.json();
+      })
+      .then((data) => {
+        this.setState(data);
+        this.setState({ finding: false });
+        return data.waittime;
+      })
+      .then(timeout)
+      .then(() => {
+        this.setState({ shoot: true, startTime: new Date() })
+      })
 
   }
   render() {
     return (
       <>
         {this.state.finding ?
-          <div>not loading finding<Loading src={require("./Assets/Loading.gif")} /></div> :
+          <div><Searching src={require("./Assets/Searching.gif")} /></div> :
           <div>
             {this.state.gameOver ?
               <>
                 {this.state.shoot ?
-                  <button>Don't Shoot</button>
-                  :
                   <button onClick={this.hoot}>Shoot!</button>
+                  :
+                  <button>Don't Shoot</button>
                 }
               </>
               :
-                <>
-                  <p>GAME OVER!!! Insert rainbow animation</p>
-                  {this.state.won ?
+              <>
+                <p>GAME OVER!!! Insert rainbow animation</p>
+                {this.state.won ?
                   <div> you won </div> :
                   <div> you did not win</div>
-                  }
-                </>
+                }
+              </>
             }
           </div>
 
