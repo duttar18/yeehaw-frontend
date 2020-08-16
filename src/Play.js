@@ -16,11 +16,12 @@ const Button = styled.button`
   text-align: center;
   text-decoration: none;
   font-family: 'Pangolin', cursive;
+  font-size: 2em;
   display: inline-block;
   font-size: 16px;
   cursor: pointer;
-  width: 100px;
-  max-width: 200px;
+  width: 300px;
+  max-width: 400px;
 `;
 const FemaleShooterWalking = styled.img`
     position: fixed; 
@@ -48,6 +49,11 @@ const MaleStand = styled.img`
 `;
 const Searching = styled.img`
     max-width: 750px;
+`;
+const Text = styled.h1`
+  font-size: 3em; 
+  font-family: 'Pangolin', cursive;
+
 `;
 function timeout(ms) { //pass a time in milliseconds to this function
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -135,8 +141,8 @@ class Play extends React.Component {
               <>
                 <p>GAME OVER!!! Insert rainbow animation</p>
                 {this.state.won ?
-                  <div> you won </div> :
-                  <div> you did not win</div>
+                  <Text> You Won </Text> :
+                  <Text> You Did Not Win</Text>
                 }
               </>
               :

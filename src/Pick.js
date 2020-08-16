@@ -119,8 +119,6 @@ class Menu extends React.Component {
                     </label>
                     <button>Save</button>
                 </form>
-
-
             </Flexbox>
         );
     }
