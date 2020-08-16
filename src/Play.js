@@ -33,8 +33,9 @@ class Play extends React.Component {
     this.shoot = this.shoot.bind(this);
   }
   shoot() {
+
     this.setState({ time: (((new Date()) - this.state.startTime) / 1000.0) })
-    fetch(this.props.apiUrl+"/deathmatch", {
+    fetch(this.props.apiUrl + "/deathmatch", {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
@@ -56,7 +57,7 @@ class Play extends React.Component {
   }
   componentDidMount() {
     console.log(this.props.id)
-    fetch(this.props.apiUrl+"/finding", {
+    fetch(this.props.apiUrl + "/finding", {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
@@ -65,19 +66,19 @@ class Play extends React.Component {
         "id": this.props.id
       })
     })
-    .then((response) => {
-      if (!response.ok) throw Error(response.statusText);
-      return response.json();
-    })
-    .then((data) => {
-      this.setState(data);
-      this.setState({ finding: false });
-      return data.waittime;
-    })
-    .then(timeout)
-    .then(() => {
-      this.setState({ shoot: true, startTime: new Date() })
-    })
+      .then((response) => {
+        if (!response.ok) throw Error(response.statusText);
+        return response.json();
+      })
+      .then((data) => {
+        this.setState(data);
+        this.setState({ finding: false });
+        return data.waittime;
+      })
+      .then(timeout)
+      .then(() => {
+        this.setState({ shoot: true, startTime: new Date() })
+      })
 
   }
   render() {
@@ -88,20 +89,21 @@ class Play extends React.Component {
           <div>
             {this.state.gameOver ?
               <>
-                {this.state.shoot ?
-                  <button>Don't Shoot</button>
-                  :
-                  <button onClick={this.hoot}>Shoot!</button>
+                <p>GAME OVER!!! Insert rainbow animation</p>
+                {this.state.won ?
+                  <div> you won </div> :
+                  <div> you did not win</div>
                 }
               </>
               :
-                <>
-                  <p>GAME OVER!!! Insert rainbow animation</p>
-                  {this.state.won ?
-                  <div> you won </div> :
-                  <div> you did not win</div>
-                  }
-                </>
+              <>
+                {this.state.shoot ?
+                  <button onClick={this.shoot}>Shoot!</button>
+                  :
+                  <button>Don't Shoot</button>
+                }
+              </>
+
             }
           </div>
 
