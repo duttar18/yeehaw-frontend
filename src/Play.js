@@ -21,7 +21,6 @@ const FlexBox2 = styled.div`
 `;
 const Button = styled.button`
   position: fixed; 
-  margin-top: 20px;
   background-color: black;
   border: none;
   color: white;
@@ -29,9 +28,21 @@ const Button = styled.button`
   text-align: center;
   text-decoration: none;
   font-family: 'Pangolin', cursive;
-  font-size: 2em;
-  display: inline-block;
-  font-size: 16px;
+  font-size: 40px;
+  cursor: pointer;
+  width: 300px;
+  max-width: 400px;
+`;
+const Button2 = styled.button`
+  position: fixed; 
+  background-color: green;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-family: 'Pangolin', cursive;
+  font-size: 40px;
   cursor: pointer;
   width: 300px;
   max-width: 400px;
@@ -88,8 +99,19 @@ const Searching = styled.img`
     max-width: 750px;
 `;
 const Text = styled.h1`
+  color: red; 
   font-size: 3em; 
   font-family: 'Pangolin', cursive;
+`;
+const Text2 = styled.h1`
+  color: green; 
+  font-size: 3em; 
+  font-family: 'Pangolin', cursive;
+`;
+const Coin = styled.img`
+  max-height: 20%;
+  max-width: 20%;
+  margin-right: 10%;
 `;
 function timeout(ms) { //pass a time in milliseconds to this function
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -175,28 +197,35 @@ class Play extends React.Component {
           <div>
             <FlexBox>
               <h1>{this.state.name}</h1>
-              <h1>{this.state.playerMoney}</h1>
+              <h1>
+                <Coin src={require("./Assets/coin.gif")} />
+                {this.state.playerMoney}
+              </h1>
             </FlexBox>
             <FlexBox2>
               <h1>{this.state.player2Name}</h1>
-              <h1>{this.state.player2Money}</h1>
+              <h1>
+                <Coin src={require("./Assets/coin.gif")} />
+                {this.state.player2Money}
+              </h1>
             </FlexBox2>
             {this.state.gameOver ?
               <>
-                <Text>GAME OVER</Text>
+
                 {this.state.won ?
                   <>
-                    <Text> You Won </Text>
+                    <Text2>GAME OVER</Text2>
+                    <Text2> You Won </Text2>
                     {this.state.gender === "M" ?
                       <>
                         {this.state.player2Gender === "M" ?
                           <>
                             <FemaleDeath src={require("./Assets/ManDeathLeft.gif")} />
-                            <MaleStandNoAn src={require("./Assets/ManStandRight.gif")} />
+                            <MaleStandNoAn src={require("./Assets/Shooter.gif")} />
                           </> :
                           <>
                             <FemaleDeath src={require("./Assets/GirlDeathLeft.gif")} />
-                            <MaleStandNoAn src={require("./Assets/ManStandRight.gif")} />
+                            <MaleStandNoAn src={require("./Assets/Shooter.gif")} />
                           </>}
 
                       </> :
@@ -204,26 +233,28 @@ class Play extends React.Component {
                         {this.state.player2Gender === "M" ?
                           <>
                             <FemaleDeath src={require("./Assets/ManDeathLeft.gif")} />
-                            <MaleStandNoAn src={require("./Assets/GirlStandRight.gif")} />
+                            <MaleStandNoAn src={require("./Assets/GirlShooter.gif")} />
                           </> :
                           <>
                             <FemaleDeath src={require("./Assets/GirlDeathLeft.gif")} />
-                            <MaleStandNoAn src={require("./Assets/GirlStandRight.gif")} />
+                            <MaleStandNoAn src={require("./Assets/GirlShooter.gif")} />
                           </>}
                       </>
                     }
                   </> :
-                  <><Text> You Didn't Win </Text>
+                  <>
+                    <Text>GAME OVER</Text>
+                    <Text> You Didn't Win </Text>
                     {this.state.gender === "M" ?
                       <>
                         {this.state.player2Gender === "M" ?
                           <>
                             <MaleDeath src={require("./Assets/ManDeathRight.gif")} />
-                            <FemaleStandNoAn src={require("./Assets/ManStandLeft.gif")} />
+                            <FemaleStandNoAn src={require("./Assets/ManShootLeft.gif")} />
                           </> :
                           <>
                             <MaleDeath src={require("./Assets/ManDeathRight.gif")} />
-                            <FemaleStandNoAn src={require("./Assets/GirlStandLeft.gif")} />
+                            <FemaleStandNoAn src={require("./Assets/GirlShootLeft.gif")} />
                           </>}
 
                       </> :
@@ -231,11 +262,11 @@ class Play extends React.Component {
                         {this.state.player2Gender === "M" ?
                           <>
                             <MaleDeath src={require("./Assets/GirlDeathRight.gif")} />
-                            <FemaleStandNoAn src={require("./Assets/ManStandLeft.gif")} />
+                            <FemaleStandNoAn src={require("./Assets/ManShootLeft.gif")} />
                           </> :
                           <>
                             <MaleDeath src={require("./Assets/GirlDeathRight.gif")} />
-                            <FemaleStandNoAn src={require("./Assets/GirlStandLeft.gif")} />
+                            <FemaleStandNoAn src={require("./Assets/GirlShootLeft.gif")} />
                           </>}
                       </>
                     }
@@ -264,9 +295,9 @@ class Play extends React.Component {
                   </>
                 }
                 {this.state.shoot ?
-                  <Button onClick={this.shoot}>Shoot!</Button>
+                  <Button2 onClick={this.shoot}>Shoot!</Button2>
                   :
-                  <Button>Don't Shoot</Button>
+                  <Button >Don't Shoot</Button>
                 }
               </>
             }
