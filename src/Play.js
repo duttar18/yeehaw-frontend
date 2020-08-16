@@ -5,7 +5,7 @@ import styled from "styled-components";
 import Time from 'react-time';
 
 
-const Loading = styled.img`
+const Searching = styled.img`
     max-width: 750px;
 `;
 function timeout(ms) { //pass a time in milliseconds to this function
@@ -85,7 +85,7 @@ class Play extends React.Component {
     return (
       <>
         {this.state.finding ?
-          <div>not loading finding<Loading src={require("./Assets/Loading.gif")} /></div> :
+          <div><Searching src={require("./Assets/Searching.gif")} /></div> :
           <div>
             {this.state.gameOver ?
               <>
@@ -103,7 +103,6 @@ class Play extends React.Component {
                   <button>Don't Shoot</button>
                 }
               </>
-
             }
           </div>
 
