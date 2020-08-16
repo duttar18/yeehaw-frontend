@@ -25,49 +25,49 @@ const Button = styled.button`
 const FemaleShooterWalking = styled.img`
     position: fixed; 
     margin-top: 5%;
-    height: 400px;
+    height: 20%;
     animation: ${keyFrameRight} 6s ease-in-out 0s forwards; 
 `;
 const MaleShooterWalking = styled.img`
     position: fixed; 
     margin-top: 5%;
-    height: 400px;
+    height: 20%;
     animation: ${keyFrameLeft} 6s ease-in-out 0s forwards; 
 `;
 const FemaleStand = styled.img`
     position: fixed; 
     margin-top: 5%;
-    height: 400px;
+    height: 20%;
     animation: ${StandRight} 6s ease-in-out 0s forwards; 
 `;
 const MaleStand = styled.img`
     position: fixed; 
     margin-top: 5%;
-    height: 400px;
+    height: 20%;
     animation: ${StandLeft} 6s ease-in-out 0s forwards; 
 `;
 const FemaleStandNoAn = styled.img`
     position: fixed; 
     margin-top: 5%;
-    height: 400px;
+    height: 20%;
     right: 0; 
 `;
 const MaleStandNoAn = styled.img`
     position: fixed; 
     margin-top: 5%;
-    height: 400px;
+    height: 20%;
     left: 0;
 `;
 const FemaleDeath = styled.img`
     position: fixed; 
     margin-top: 5%;
-    height: 400px;
+    height: 20%;
     right: 0;
 `;
 const MaleDeath = styled.img`
     position: fixed; 
     margin-top: 5%;
-    height: 400px;
+    height: 20%;
     left: 0;
 `;
 const Searching = styled.img`
@@ -156,7 +156,7 @@ class Play extends React.Component {
   render() {
     return (
       <>
-        {this.state.finding ?
+        {!this.state.finding ?
           <div><Searching src={require("./Assets/Searching.gif")} /></div> :
           <div>
             {this.state.gameOver ?
