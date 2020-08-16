@@ -47,6 +47,30 @@ const MaleStand = styled.img`
     height: 400px;
     animation: ${StandLeft} 6s ease-in-out 0s forwards; 
 `;
+const FemaleStandNoAn = styled.img`
+    position: fixed; 
+    margin-top: 5%;
+    height: 400px;
+    right: 0; 
+`;
+const MaleStandNoAn = styled.img`
+    position: fixed; 
+    margin-top: 5%;
+    height: 400px;
+    left: 0;
+`;
+const FemaleDeath = styled.img`
+    position: fixed; 
+    margin-top: 5%;
+    height: 400px;
+    right: 0;
+`;
+const MaleDeath = styled.img`
+    position: fixed; 
+    margin-top: 5%;
+    height: 400px;
+    left: 0;
+`;
 const Searching = styled.img`
     max-width: 750px;
 `;
@@ -136,15 +160,22 @@ class Play extends React.Component {
   render() {
     return (
       <>
-        {!this.state.finding ?
+        {this.state.finding ?
           <div><Searching src={require("./Assets/Searching.gif")} /></div> :
           <div>
             {this.state.gameOver ?
               <>
-                <p>GAME OVER!!! Insert rainbow animation</p>
+                <Text>GAME OVER</Text>
                 {this.state.won ?
-                  <Text> You Won </Text> :
-                  <Text> You Did Not Win</Text>
+                  <>
+                    <Text> You Won </Text>
+                    <FemaleDeath src={require("./Assets/GirlDeathLeft.gif")} />
+                    <MaleStandNoAn src={require("./Assets/ManStandRight.gif")} />
+                  </> :
+                  <><Text> You Didn't Win </Text>
+                    <MaleDeath src={require("./Assets/ManDeathRight.gif")} />
+                    <FemaleStandNoAn src={require("./Assets/GirlStandLeft.gif")} />
+                  </>
                 }
               </>
               :
@@ -152,10 +183,8 @@ class Play extends React.Component {
                 <FemaleShooterWalking src={require("./Assets/GirlWalkingRight.gif")} />
                 <MaleShooterWalking src={require("./Assets/ManWalkingLeft.gif")} />
                 <FemaleStand src={require("./Assets/GirlStandLeft.gif")} />
-
                 <MaleStand src={require("./Assets/ManStandRight.gif")} />
-
-                {!this.state.shoot ?
+                {this.state.shoot ?
                   <Button onClick={this.shoot}>Shoot!</Button>
                   :
                   <Button>Don't Shoot</Button>
