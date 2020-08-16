@@ -1,11 +1,39 @@
 
-import React, { Component } from 'react';
-import { Link } from "react-router-dom";
+import React from 'react';
 import styled from "styled-components";
 import Time from 'react-time';
+import { keyFrameRight } from './Keyframesright';
+import { keyFrameLeft } from './Keyframesleft';
 
-
-const Loading = styled.img`
+const Button = styled.button`
+  position: fixed; 
+  margin-top: 20px;
+  background-color: black;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-family: 'Pangolin', cursive;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100px;
+  max-width: 200px;
+`;
+const FemaleShooterWalking = styled.img`
+    position: fixed; 
+    margin-top: 300px;
+    height: 400px;
+    animation: ${keyFrameRight} 6s ease-in-out 0s forwards; 
+`;
+const MaleShooterWalking = styled.img`
+    position: fixed; 
+    margin-top: 300px;
+    height: 400px;
+    animation: ${keyFrameLeft} 6s ease-in-out 0s forwards; 
+`;
+const Searching = styled.img`
     max-width: 750px;
 `;
 function timeout(ms) { //pass a time in milliseconds to this function
@@ -83,8 +111,8 @@ class Play extends React.Component {
   render() {
     return (
       <>
-        {this.state.finding ?
-          <div>not loading finding<Loading src={require("./Assets/Loading.gif")} /></div> :
+        {!this.state.finding ?
+          <div><Searching src={require("./Assets/Searching.gif")} /></div> :
           <div>
             {this.state.gameOver ?
               <>
@@ -96,13 +124,14 @@ class Play extends React.Component {
               </>
               :
               <>
+                <FemaleShooterWalking src={require("./Assets/GirlWalkingRight.gif")} />
+                <MaleShooterWalking src={require("./Assets/ManWalkingLeft.gif")} />
                 {this.state.shoot ?
-                  <button onClick={this.shoot}>Shoot!</button>
+                  <Button onClick={this.shoot}>Shoot!</Button>
                   :
-                  <button>Don't Shoot</button>
+                  <Button>Don't Shoot</Button>
                 }
               </>
-
             }
           </div>
 
