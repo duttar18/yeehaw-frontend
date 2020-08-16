@@ -1,4 +1,3 @@
-
 import React from 'react';
 import styled from "styled-components";
 import Time from 'react-time';
@@ -47,19 +46,41 @@ const MaleStand = styled.img`
     height: 400px;
     animation: ${StandLeft} 6s ease-in-out 0s forwards; 
 `;
+const FemaleStandNoAn = styled.img`
+    position: fixed; 
+    margin-top: 5%;
+    height: 400px;
+    right: 0; 
+`;
+const MaleStandNoAn = styled.img`
+    position: fixed; 
+    margin-top: 5%;
+    height: 400px;
+    left: 0;
+`;
+const FemaleDeath = styled.img`
+    position: fixed; 
+    margin-top: 5%;
+    height: 400px;
+    right: 0;
+`;
+const MaleDeath = styled.img`
+    position: fixed; 
+    margin-top: 5%;
+    height: 400px;
+    left: 0;
+`;
 const Searching = styled.img`
     max-width: 750px;
 `;
 const Text = styled.h1`
   font-size: 3em; 
   font-family: 'Pangolin', cursive;
-
 `;
 function timeout(ms) { //pass a time in milliseconds to this function
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 class Play extends React.Component {
-
   constructor(props) {
     // Initialize mutable state
     super(props);
@@ -83,7 +104,9 @@ class Play extends React.Component {
     this.shoot = this.shoot.bind(this);
   }
   shoot() {
-    console.log("shot")
+    const audioEl = document.getElementsByClassName("audio-element")[0]
+    audioEl.volume = 0.5;
+    audioEl.play()
     let thistime = Date.now() - this.state.startTime.getTime()
     fetch(this.props.apiUrl + "/deathmatch", {
       method: "POST",
@@ -107,7 +130,6 @@ class Play extends React.Component {
   }
   componentDidMount() {
     console.log(this.props.id)
-
     fetch(this.props.apiUrl + "/finding", {
       method: "POST",
       headers: {
@@ -130,7 +152,6 @@ class Play extends React.Component {
       .then(() => {
         this.setState({ shoot: true, startTime: new Date() })
       })
-
   }
   render() {
     return (
@@ -140,10 +161,17 @@ class Play extends React.Component {
           <div>
             {this.state.gameOver ?
               <>
-                <p>GAME OVER!!! Insert rainbow animation</p>
+                <Text>GAME OVER</Text>
                 {this.state.won ?
-                  <Text> You Won </Text> :
-                  <Text> You Did Not Win</Text>
+                  <>
+                    <Text> You Won </Text>
+                    <FemaleDeath src={require("./Assets/GirlDeathLeft.gif")} />
+                    <MaleStandNoAn src={require("./Assets/ManStandRight.gif")} />
+                  </> :
+                  <><Text> You Didn't Win </Text>
+                    <MaleDeath src={require("./Assets/ManDeathRight.gif")} />
+                    <FemaleStandNoAn src={require("./Assets/GirlStandLeft.gif")} />
+                  </>
                 }
               </>
               :
@@ -151,9 +179,7 @@ class Play extends React.Component {
                 <FemaleShooterWalking src={require("./Assets/GirlWalkingRight.gif")} />
                 <MaleShooterWalking src={require("./Assets/ManWalkingLeft.gif")} />
                 <FemaleStand src={require("./Assets/GirlStandLeft.gif")} />
-
                 <MaleStand src={require("./Assets/ManStandRight.gif")} />
-
                 {this.state.shoot ?
                   <Button onClick={this.shoot}>Shoot!</Button>
                   :
@@ -161,17 +187,17 @@ class Play extends React.Component {
                 }
               </>
             }
+            <audio className="audio-element">
+              <source src={require("./Assets/gunshot.mp3")}></source>
+            </audio>
           </div>
-
 
 
         }
       </>
-
     )
   }
 }
-
 
 
 export default Play
