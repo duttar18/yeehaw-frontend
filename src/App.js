@@ -15,7 +15,7 @@ const Rider = styled.img`
   margin-top: 35%; 
     height: 200px;
     position: fixed;
-    animation: ${keyFrameRider} 12s ease-in-out 0s infinite; 
+    animation: ${keyFrameRider} 12s ease-in-out 0s forwards; 
 `;
 const Player = styled.audio`
     position: fixed; 
