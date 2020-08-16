@@ -33,8 +33,7 @@ class Play extends React.Component {
     this.shoot = this.shoot.bind(this);
   }
   shoot() {
-
-    this.setState({ time: (((new Date()) - this.state.startTime) / 1000.0) })
+    let thistime = Date.now() - this.state.startTime.getTime()
     fetch(this.props.apiUrl + "/deathmatch", {
       method: "POST",
       headers: {
@@ -43,7 +42,7 @@ class Play extends React.Component {
       body: JSON.stringify({
         "id": this.props.id,
         "gameId": this.state.gameId,
-        "time": this.state.time
+        "time": thistime
       })
     })
       .then((response) => {
