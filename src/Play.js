@@ -1,4 +1,3 @@
-
 import React from 'react';
 import styled from "styled-components";
 import Time from 'react-time';
@@ -77,7 +76,6 @@ const Searching = styled.img`
 const Text = styled.h1`
   font-size: 3em; 
   font-family: 'Pangolin', cursive;
-
 `;
 function timeout(ms) { //pass a time in milliseconds to this function
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -132,7 +130,6 @@ class Play extends React.Component {
   }
   componentDidMount() {
     console.log(this.props.id)
-
     fetch(this.props.apiUrl + "/finding", {
       method: "POST",
       headers: {
@@ -155,7 +152,6 @@ class Play extends React.Component {
       .then(() => {
         this.setState({ shoot: true, startTime: new Date() })
       })
-
   }
   render() {
     return (
@@ -197,14 +193,11 @@ class Play extends React.Component {
           </div>
 
 
-
         }
       </>
-
     )
   }
 }
-
 
 
 export default Play
