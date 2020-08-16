@@ -13,8 +13,8 @@ const Rules = styled.div`
     background-repeat: no-repeat;
     background-image: url(${img});
     background-size: cover;
-    width: 1620px;
-    height: 1002px;
+    width: 940px;
+    height: 601px;
 `;
 const Button = styled.button`
     margin-left: 50%;
