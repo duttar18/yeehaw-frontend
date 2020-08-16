@@ -62,6 +62,7 @@ class Menu extends React.Component {
         this.setState({ name: event.target.value });
     }
     save(event) {
+        console.log(this.state,this.props.id)
         fetch(this.props.apiUrl + "/user", {
             method: "POST",
             headers: {
@@ -79,6 +80,7 @@ class Menu extends React.Component {
             })
             .then((data) => {
                 this.setState(data);
+                console.log(data)
             })
     }
 
@@ -113,7 +115,7 @@ class Menu extends React.Component {
                     <Button onClick={() => { this.setState({ gender: "F" }) }} className={this.state.gender === "F" ? "selected" : {}}>Cowgirl</Button>
                 </Character>
                 <input type="text" value={this.state.name} onChange={this.handleChange} />
-                <button onClick={this.save}>Save</button>
+                <Button onClick={this.save}>Save</Button>
             </Flexbox>
         );
     }
