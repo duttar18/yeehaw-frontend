@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
 import About from "./About";
 import Play from "./Play";
@@ -8,13 +8,14 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import styled from "styled-components";
 import img from './Assets/Background.png';
 import { Link } from "react-router-dom";
+import { keyFrameRider } from './KeyFrameRider';
 
 
-const Shooter = styled.img`
-    height: 400px;
+const Rider = styled.img`
+  margin-top: 35%; 
+    height: 200px;
     position: fixed;
-    margin-top: 58vh;
-    margin-left: 40vh;
+    animation: ${keyFrameRider} 12s ease-in-out 0s infinite; 
 `;
 const Player = styled.audio`
     position: fixed; 
@@ -87,27 +88,27 @@ class App extends React.Component {
     // Initialize mutable state
     super(props);
     this.state = {
-        id: 0,
-        apiUrl: "https://yeehaw-backend.herokuapp.com"
+      id: 0,
+      apiUrl: "https://yeehaw-backend.herokuapp.com"
     };
   }
   componentDidMount() {
-    fetch(this.state.apiUrl+"/createPlayer", {
+    fetch(this.state.apiUrl + "/createPlayer", {
       method: "POST",
-      headers:{
-          'Content-Type' : 'application/json'
+      headers: {
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-          "name" : "player"
+        "name": "player"
       })
     })
-    .then((response) => {
-      if (!response.ok) throw Error(response.statusText);
-      return response.json();
-    })
-    .then((data) => {
-      this.setState(data)
-    })
+      .then((response) => {
+        if (!response.ok) throw Error(response.statusText);
+        return response.json();
+      })
+      .then((data) => {
+        this.setState(data)
+      })
   }
   render() {
     return (
@@ -115,13 +116,13 @@ class App extends React.Component {
         {this.state.visible ? <Player src={require("./Assets/music.mp3")} controls autoplay preload="auto" loop /> : null}
         {this.state.visible ? <Button onClick={() => { this.setState({ visible: false }) }}>Hide</Button> : <Button2 onClick={() => { this.setState({ visible: true }) }}>Music</Button2>}
         <Link to="/"><HomeButton>Home</HomeButton></Link>
-
+        <Rider src={require("./Assets/Rider.gif")} />
         <Welc >
           <Switch >
             <Route exact path="/" component={Menu} />
             <Route path="/about" component={About} />
             <Route path="/play" component={() => <Play id={this.state.id} apiUrl={this.state.apiUrl} />} />
-            <Route path="/pick" component={() => <Pick id={this.state.id} apiUrl={this.state.apiUrl}/>} />
+            <Route path="/pick" component={() => <Pick id={this.state.id} apiUrl={this.state.apiUrl} />} />
           </Switch>
         </Welc>
       </BrowserRouter>
