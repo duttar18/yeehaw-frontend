@@ -7,6 +7,8 @@ export const keyFrameLeft = keyframes`
     }
     100% { 
         left: 0;
+        overflow: hidden;
+        visibility:hidden;
     }
 
 `;
