@@ -59,7 +59,7 @@ class Menu extends React.Component {
         this.save = this.save.bind(this);
     }
     handleChange(event) {
-        this.setState({ value: event.target.value });
+        this.setState({ name: event.target.value });
     }
     save(event) {
         fetch(this.props.apiUrl + "/user", {
@@ -112,13 +112,8 @@ class Menu extends React.Component {
                     <FemaleShooter src={require("./Assets/GirlShooter.gif")} />
                     <Button onClick={() => { this.setState({ gender: "F" }) }} className={this.state.gender === "F" ? "selected" : {}}>Cowgirl</Button>
                 </Character>
-                <form onSubmit={this.handleSubmit}>
-                    <label>
-                        Name:
-                    <input type="text" value={this.state.name} onChange={this.handleChange} />
-                    </label>
-                    <button>Save</button>
-                </form>
+                <input type="text" value={this.state.name} onChange={this.handleChange} />
+                <button onClick={this.save}>Save</button>
             </Flexbox>
         );
     }
