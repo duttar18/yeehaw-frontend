@@ -83,13 +83,6 @@ const HomeButton = styled.button`
     width: 100px;
     max-width: 200px;
 `;
-const Container = styled.div`
-  position: absolute;
-  width: 100%;
-  height: 100;
-  top: 0px;
-  left: 0px;
-`;
 class App extends React.Component {
   constructor(props) {
     // Initialize mutable state
@@ -124,15 +117,14 @@ class App extends React.Component {
         {this.state.visible ? <Button onClick={() => { this.setState({ visible: false }) }}>Hide</Button> : <Button2 onClick={() => { this.setState({ visible: true }) }}>Music</Button2>}
         <Link to="/"><HomeButton>Home</HomeButton></Link>
         <Rider src={require("./Assets/Rider.gif")} />
-        <Welc ></Welc>
-        <Container>
+        <Welc >
           <Switch >
             <Route exact path="/" component={Menu} />
             <Route path="/about" component={About} />
             <Route path="/play" component={() => <Play id={this.state.id} apiUrl={this.state.apiUrl} />} />
             <Route path="/pick" component={() => <Pick id={this.state.id} apiUrl={this.state.apiUrl} />} />
           </Switch>
-        </Container>
+        </Welc>
       </BrowserRouter>
     );
   }
