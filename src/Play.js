@@ -5,6 +5,20 @@ import { keyFrameRight } from './Keyframesright';
 import { keyFrameLeft } from './Keyframesleft';
 import { StandRight } from './KeyFrameStandRight';
 import { StandLeft } from './KeyFrameStandLeft';
+const FlexBox = styled.div`
+  position: fixed; 
+  left: 3%;
+  top: 10%; 
+  display: flex; 
+  flex-direction: column;
+`;
+const FlexBox2 = styled.div`
+  position: fixed; 
+  right: 3%;
+  top: 10%; 
+  display: flex; 
+  flex-direction: column;
+`;
 const Button = styled.button`
   position: fixed; 
   margin-top: 20px;
@@ -86,9 +100,9 @@ class Play extends React.Component {
     super(props);
     this.state = {
       finding: true,
-      playerMoney: 0,
-      player2Money: 0,
-      player2Name: "",
+      playerMoney: 500,
+      player2Money: 1000,
+      player2Name: "James Li",
       player2Gender: "M",
       waittime: 0,
       gameId: 0,
@@ -98,7 +112,7 @@ class Play extends React.Component {
       player2Time: 0,
       won: true,
       gameOver: false,
-      name: "",
+      name: "Anonymous",
       gender: "M",
     };
     this.shoot = this.shoot.bind(this);
@@ -159,27 +173,60 @@ class Play extends React.Component {
         {this.state.finding ?
           <div><Searching src={require("./Assets/Searching.gif")} /></div> :
           <div>
+            <FlexBox>
+              <h1>{this.state.name}</h1>
+              <h1>{this.state.playerMoney}</h1>
+            </FlexBox>
+            <FlexBox2>
+              <h1>{this.state.player2Name}</h1>
+              <h1>{this.state.player2Money}</h1>
+            </FlexBox2>
             {this.state.gameOver ?
               <>
                 <Text>GAME OVER</Text>
                 {this.state.won ?
                   <>
                     <Text> You Won </Text>
-                    <FemaleDeath src={require("./Assets/GirlDeathLeft.gif")} />
-                    <MaleStandNoAn src={require("./Assets/ManStandRight.gif")} />
+                    {this.state.gender == "M" ?
+                      <>
+                        <FemaleDeath src={require("./Assets/GirlDeathLeft.gif")} />
+                        <MaleStandNoAn src={require("./Assets/ManStandRight.gif")} />
+                      </> :
+                      <>
+                        <FemaleDeath src={require("./Assets/GirlDeathLeft.gif")} />
+                        <MaleStandNoAn src={require("./Assets/GirlStandRight.gif")} />
+                      </>
+                    }
                   </> :
                   <><Text> You Didn't Win </Text>
-                    <MaleDeath src={require("./Assets/ManDeathRight.gif")} />
-                    <FemaleStandNoAn src={require("./Assets/GirlStandLeft.gif")} />
+                    {this.state.gender == "M" ?
+                      <>
+                        <MaleDeath src={require("./Assets/ManDeathRight.gif")} />
+                        <FemaleStandNoAn src={require("./Assets/GirlStandLeft.gif")} />
+                      </> :
+                      <>
+                        <MaleDeath src={require("./Assets/GirlDeathRight.gif")} />
+                        <FemaleStandNoAn src={require("./Assets/GirlStandLeft.gif")} />
+                      </>
+                    }
                   </>
                 }
               </>
               :
               <>
+
                 <FemaleShooterWalking src={require("./Assets/GirlWalkingRight.gif")} />
-                <MaleShooterWalking src={require("./Assets/ManWalkingLeft.gif")} />
                 <FemaleStand src={require("./Assets/GirlStandLeft.gif")} />
-                <MaleStand src={require("./Assets/ManStandRight.gif")} />
+                {this.state.gender == "M" ?
+                  <>
+                    <MaleShooterWalking src={require("./Assets/ManWalkingLeft.gif")} />
+                    <MaleStand src={require("./Assets/ManStandRight.gif")} />
+                  </> :
+                  <>
+                    <MaleShooterWalking src={require("./Assets/GirlWalkingLeft.gif")} />
+                    <MaleStand src={require("./Assets/GirlStandRight.gif")} />
+                  </>
+                }
                 {this.state.shoot ?
                   <Button onClick={this.shoot}>Shoot!</Button>
                   :

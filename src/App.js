@@ -99,7 +99,7 @@ class App extends React.Component {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        "name": "player"
+        "name": "Anonymous"
       })
     })
       .then((response) => {
