@@ -52,7 +52,7 @@ class Menu extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: "player",
+            name: "Anonymous",
             gender: "M"
         }
         this.handleChange = this.handleChange.bind(this);
