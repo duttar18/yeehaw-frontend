@@ -6,14 +6,13 @@ import img from './Assets/Board.png';
 
 const Flexbox = styled.div`
     display: flex; 
-    height: 50%;
     justify-content: space-around;
     align-items: center;
     background-repeat: no-repeat;
-    width: 50%;
     background-image: url(${img});
     background-size: cover;
-    min-width: 1200px;
+    width: 1567px;
+    height: 1002px;
 `;
 const Character = styled.div`
     display: flex; 
@@ -32,14 +31,15 @@ const Button = styled.a`
     width: 200px;
     margin-left: 100px;
     max-width: 300px;
+    margin-top: 50px;
 `;
 
 const Shooter = styled.img`
-    height: 20%;
+    height: 10%;
 `;
 
 const FemaleShooter = styled.img`
-    height: 20%;
+    height: 10%;
 `;
 
 
@@ -57,7 +57,7 @@ class Menu extends React.Component {
         this.setState({ name: event.target.value });
     }
     save(event) {
-        console.log(this.state,this.props.id)
+        console.log(this.state, this.props.id)
         fetch(this.props.apiUrl + "/user", {
             method: "POST",
             headers: {
@@ -109,8 +109,10 @@ class Menu extends React.Component {
                     <FemaleShooter src={require("./Assets/GirlShooter.gif")} />
                     <Button onClick={() => { this.setState({ gender: "F" }) }} className={this.state.gender === "F" ? "selected" : {}}>Cowgirl</Button>
                 </Character>
-                <input type="text" value={this.state.name} onChange={this.handleChange} />
-                <Button onClick={this.save}>Save</Button>
+                <Character>
+                    <input type="text" value={this.state.name} onChange={this.handleChange} />
+                    <Button onClick={this.save}>Save</Button>
+                </Character>
             </Flexbox>
         );
     }
