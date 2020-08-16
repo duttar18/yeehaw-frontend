@@ -189,24 +189,54 @@ class Play extends React.Component {
                     <Text> You Won </Text>
                     {this.state.gender === "M" ?
                       <>
-                        <FemaleDeath src={require("./Assets/GirlDeathLeft.gif")} />
-                        <MaleStandNoAn src={require("./Assets/ManStandRight.gif")} />
+                        {this.state.player2Gender === "M" ?
+                          <>
+                            <FemaleDeath src={require("./Assets/ManDeathLeft.gif")} />
+                            <MaleStandNoAn src={require("./Assets/ManStandRight.gif")} />
+                          </> :
+                          <>
+                            <FemaleDeath src={require("./Assets/GirlDeathLeft.gif")} />
+                            <MaleStandNoAn src={require("./Assets/ManStandRight.gif")} />
+                          </>}
+
                       </> :
                       <>
-                        <FemaleDeath src={require("./Assets/GirlDeathLeft.gif")} />
-                        <MaleStandNoAn src={require("./Assets/GirlStandRight.gif")} />
+                        {this.state.player2Gender === "M" ?
+                          <>
+                            <FemaleDeath src={require("./Assets/ManDeathLeft.gif")} />
+                            <MaleStandNoAn src={require("./Assets/GirlStandRight.gif")} />
+                          </> :
+                          <>
+                            <FemaleDeath src={require("./Assets/GirlDeathLeft.gif")} />
+                            <MaleStandNoAn src={require("./Assets/GirlStandRight.gif")} />
+                          </>}
                       </>
                     }
                   </> :
                   <><Text> You Didn't Win </Text>
                     {this.state.gender === "M" ?
                       <>
-                        <MaleDeath src={require("./Assets/ManDeathRight.gif")} />
-                        <FemaleStandNoAn src={require("./Assets/GirlStandLeft.gif")} />
+                        {this.state.player2Gender === "M" ?
+                          <>
+                            <MaleDeath src={require("./Assets/ManDeathRight.gif")} />
+                            <FemaleStandNoAn src={require("./Assets/ManStandLeft.gif")} />
+                          </> :
+                          <>
+                            <MaleDeath src={require("./Assets/ManDeathRight.gif")} />
+                            <FemaleStandNoAn src={require("./Assets/GirlStandLeft.gif")} />
+                          </>}
+
                       </> :
                       <>
-                        <MaleDeath src={require("./Assets/GirlDeathRight.gif")} />
-                        <FemaleStandNoAn src={require("./Assets/GirlStandLeft.gif")} />
+                        {this.state.player2Gender === "M" ?
+                          <>
+                            <MaleDeath src={require("./Assets/GirlDeathRight.gif")} />
+                            <FemaleStandNoAn src={require("./Assets/ManStandLeft.gif")} />
+                          </> :
+                          <>
+                            <MaleDeath src={require("./Assets/GirlDeathRight.gif")} />
+                            <FemaleStandNoAn src={require("./Assets/GirlStandLeft.gif")} />
+                          </>}
                       </>
                     }
                   </>
@@ -214,9 +244,15 @@ class Play extends React.Component {
               </>
               :
               <>
+                {this.state.player2Gender === "M" ? <>
+                  <FemaleShooterWalking src={require("./Assets/ManWalkingRight.gif")} />
+                  <FemaleStand src={require("./Assets/ManStandLeft.gif")} />
+                </> :
+                  <>
+                    <FemaleShooterWalking src={require("./Assets/GirlWalkingRight.gif")} />
+                    <FemaleStand src={require("./Assets/GirlStandLeft.gif")} />
+                  </>}
 
-                <FemaleShooterWalking src={require("./Assets/GirlWalkingRight.gif")} />
-                <FemaleStand src={require("./Assets/GirlStandLeft.gif")} />
                 {this.state.gender === "M" ?
                   <>
                     <MaleShooterWalking src={require("./Assets/ManWalkingLeft.gif")} />
