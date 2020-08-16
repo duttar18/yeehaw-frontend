@@ -24,25 +24,25 @@ const Button = styled.button`
 `;
 const FemaleShooterWalking = styled.img`
     position: fixed; 
-    margin-top: 300px;
+    margin-top: 5%;
     height: 400px;
     animation: ${keyFrameRight} 6s ease-in-out 0s forwards; 
 `;
 const MaleShooterWalking = styled.img`
     position: fixed; 
-    margin-top: 300px;
+    margin-top: 5%;
     height: 400px;
     animation: ${keyFrameLeft} 6s ease-in-out 0s forwards; 
 `;
 const FemaleStand = styled.img`
     position: fixed; 
-    margin-top: 300px;
+    margin-top: 5%;
     height: 400px;
     animation: ${StandRight} 6s ease-in-out 0s forwards; 
 `;
 const MaleStand = styled.img`
     position: fixed; 
-    margin-top: 300px;
+    margin-top: 5%;
     height: 400px;
     animation: ${StandLeft} 6s ease-in-out 0s forwards; 
 `;

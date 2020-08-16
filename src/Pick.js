@@ -16,7 +16,7 @@ const Flexbox = styled.div`
     background-size: cover;
 `;
 const Character = styled.div`
-    margin-left: 200px;
+    margin: auto; 
     display: flex; 
     flex-direction: column;
 `;
@@ -59,9 +59,9 @@ class Menu extends React.Component {
         this.save = this.save.bind(this);
     }
     handleChange(event) {
-        this.setState({value: event.target.value});
-      }
-    save(event){
+        this.setState({ value: event.target.value });
+    }
+    save(event) {
         fetch(this.props.apiUrl + "/user", {
             method: "POST",
             headers: {
@@ -106,15 +106,15 @@ class Menu extends React.Component {
             <Flexbox>
                 <Character>
                     <Shooter src={require("./Assets/Shooter.gif")} />
-                    <Button onClick={()=>{this.setState({gender:"M"})}} className={this.state.gender==="M" ? "selected" : {}}>Cowboy</Button>
+                    <Button onClick={() => { this.setState({ gender: "M" }) }} className={this.state.gender === "M" ? "selected" : {}}>Cowboy</Button>
                 </Character>
                 <Character>
                     <FemaleShooter src={require("./Assets/GirlShooter.gif")} />
-                    <Button onClick={()=>{this.setState({gender:"F"})}} className={this.state.gender==="F" ? "selected" : {}}>Cowgirl</Button>
+                    <Button onClick={() => { this.setState({ gender: "F" }) }} className={this.state.gender === "F" ? "selected" : {}}>Cowgirl</Button>
                 </Character>
                 <form onSubmit={this.handleSubmit}>
                     <label>
-                    Name:
+                        Name:
                     <input type="text" value={this.state.name} onChange={this.handleChange} />
                     </label>
                     <button>Save</button>
