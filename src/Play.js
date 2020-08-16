@@ -4,7 +4,8 @@ import styled from "styled-components";
 import Time from 'react-time';
 import { keyFrameRight } from './Keyframesright';
 import { keyFrameLeft } from './Keyframesleft';
-
+import { StandRight } from './KeyFrameStandRight';
+import { StandLeft } from './KeyFrameStandLeft';
 const Button = styled.button`
   position: fixed; 
   margin-top: 20px;
@@ -32,6 +33,18 @@ const MaleShooterWalking = styled.img`
     margin-top: 300px;
     height: 400px;
     animation: ${keyFrameLeft} 6s ease-in-out 0s forwards; 
+`;
+const FemaleStand = styled.img`
+    position: fixed; 
+    margin-top: 300px;
+    height: 400px;
+    animation: ${StandRight} 6s ease-in-out 0s forwards; 
+`;
+const MaleStand = styled.img`
+    position: fixed; 
+    margin-top: 300px;
+    height: 400px;
+    animation: ${StandLeft} 6s ease-in-out 0s forwards; 
 `;
 const Searching = styled.img`
     max-width: 750px;
@@ -126,6 +139,10 @@ class Play extends React.Component {
               <>
                 <FemaleShooterWalking src={require("./Assets/GirlWalkingRight.gif")} />
                 <MaleShooterWalking src={require("./Assets/ManWalkingLeft.gif")} />
+                <FemaleStand src={require("./Assets/GirlStandLeft.gif")} />
+
+                <MaleStand src={require("./Assets/ManStandRight.gif")} />
+
                 {this.state.shoot ?
                   <Button onClick={this.shoot}>Shoot!</Button>
                   :
