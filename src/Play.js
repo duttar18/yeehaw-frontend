@@ -77,6 +77,7 @@ class Play extends React.Component {
     this.shoot = this.shoot.bind(this);
   }
   shoot() {
+    console.log("shot")
     let thistime = Date.now() - this.state.startTime.getTime()
     fetch(this.props.apiUrl + "/deathmatch", {
       method: "POST",
