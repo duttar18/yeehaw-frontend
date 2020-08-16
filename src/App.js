@@ -6,7 +6,7 @@ import Menu from "./Menu";
 import Pick from "./Pick";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import styled from "styled-components";
-import img from './Assets/Background.png';
+import img from './Assets/Backdrop.gif';
 import { Link } from "react-router-dom";
 import { keyFrameRider } from './KeyFrameRider';
 
