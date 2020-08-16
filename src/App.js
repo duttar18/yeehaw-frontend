@@ -88,7 +88,6 @@ class App extends React.Component {
     super(props);
     this.state = {
         id: 0,
-        name: "player",
         apiUrl: "http://localhost:5000"
     };
   }
@@ -122,7 +121,7 @@ class App extends React.Component {
             <Route exact path="/" component={Menu} />
             <Route path="/about" component={About} />
             <Route path="/play" component={() => <Play id={this.state.id} apiUrl={this.state.apiUrl} />} />
-            <Route path="/pick" component={Pick} />
+            <Route path="/pick" component={() => <Pick id={this.state.id} apiUrl={this.state.apiUrl}/>} />
           </Switch>
         </Welc>
       </BrowserRouter>

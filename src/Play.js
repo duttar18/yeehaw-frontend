@@ -48,7 +48,8 @@ class Play extends React.Component {
       finding: true,
       playerMoney: 0,
       player2Money: 0,
-      player2Name: 0,
+      player2Name: "",
+      player2Gender: "M",
       waittime: 0,
       gameId: 0,
       shoot: false,
@@ -57,6 +58,8 @@ class Play extends React.Component {
       player2Time: 0,
       won: true,
       gameOver: false,
+      name: "",
+      gender: "M",
     };
     this.shoot = this.shoot.bind(this);
   }
@@ -84,6 +87,7 @@ class Play extends React.Component {
   }
   componentDidMount() {
     console.log(this.props.id)
+
     fetch(this.props.apiUrl + "/finding", {
       method: "POST",
       headers: {

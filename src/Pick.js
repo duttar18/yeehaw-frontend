@@ -1,3 +1,4 @@
+import "./Pick.css"
 import React, { Component } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
@@ -21,7 +22,6 @@ const Character = styled.div`
 `;
 const Button = styled.a`
     background-color: black;
-    border: none;
     color: white;
     padding: 15px 32px;
     text-align: center;
@@ -48,21 +48,78 @@ const FemaleShooter = styled.img`
 `;
 
 
-export class Menu extends Component {
+class Menu extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            name: "player",
+            gender: "M"
+        }
+        this.handleChange = this.handleChange.bind(this);
+        this.save = this.save.bind(this);
+    }
+    handleChange(event) {
+        this.setState({value: event.target.value});
+      }
+    save(event){
+        fetch(this.props.apiUrl + "/user", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                "id": this.props.id,
+                "name": this.state.name,
+                "gender": this.state.gender
+            })
+        })
+            .then((response) => {
+                if (!response.ok) throw Error(response.statusText);
+                return response.json();
+            })
+            .then((data) => {
+                this.setState(data);
+            })
+    }
 
+    componentDidMount() {
+        fetch(this.props.apiUrl + "/user", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                "id": this.props.id
+            })
+        })
+            .then((response) => {
+                if (!response.ok) throw Error(response.statusText);
+                return response.json();
+            })
+            .then((data) => {
+                this.setState(data);
+            })
+
+    }
     render() {
         return (
             <Flexbox>
                 <Character>
                     <Shooter src={require("./Assets/Shooter.gif")} />
-                    <Link to="/"><Button>Male</Button></Link>
-
+                    <Button onClick={()=>{this.setState({gender:"M"})}} className={this.state.gender==="M" ? "selected" : {}}>Cowboy</Button>
                 </Character>
                 <Character>
                     <FemaleShooter src={require("./Assets/GirlShooter.gif")} />
-                    <Link to="/"><Button>Female</Button></Link>
-
+                    <Button onClick={()=>{this.setState({gender:"F"})}} className={this.state.gender==="F" ? "selected" : {}}>Cowgirl</Button>
                 </Character>
+                <form onSubmit={this.handleSubmit}>
+                    <label>
+                    Name:
+                    <input type="text" value={this.state.name} onChange={this.handleChange} />
+                    </label>
+                    <button>Save</button>
+                </form>
+
 
             </Flexbox>
         );
