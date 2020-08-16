@@ -98,7 +98,7 @@ class App extends React.Component {
           'Content-Type' : 'application/json'
       },
       body: JSON.stringify({
-          "name" : this.state.name
+          "name" : "player"
       })
     })
     .then((response) => {
