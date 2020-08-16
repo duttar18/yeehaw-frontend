@@ -128,7 +128,7 @@ class Play extends React.Component {
   render() {
     return (
       <>
-        {!this.state.finding ?
+        {this.state.finding ?
           <div><Searching src={require("./Assets/Searching.gif")} /></div> :
           <div>
             {this.state.gameOver ?
