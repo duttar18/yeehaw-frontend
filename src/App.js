@@ -89,7 +89,7 @@ class App extends React.Component {
     this.state = {
         id: 0,
         name: "player",
-        apiUrl: "http://yeehaw-backend.herokuapp.com"
+        apiUrl: "http://localhost:5000"
     };
   }
   componentDidMount() {

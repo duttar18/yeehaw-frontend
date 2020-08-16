@@ -33,6 +33,7 @@ class Play extends React.Component {
     this.shoot = this.shoot.bind(this);
   }
   shoot() {
+
     this.setState({ time: (((new Date()) - this.state.startTime) / 1000.0) })
     fetch(this.props.apiUrl + "/deathmatch", {
       method: "POST",
@@ -88,18 +89,18 @@ class Play extends React.Component {
           <div>
             {this.state.gameOver ?
               <>
-                {this.state.shoot ?
-                  <button onClick={this.hoot}>Shoot!</button>
-                  :
-                  <button>Don't Shoot</button>
-                }
-              </>
-              :
-              <>
                 <p>GAME OVER!!! Insert rainbow animation</p>
                 {this.state.won ?
                   <div> you won </div> :
                   <div> you did not win</div>
+                }
+              </>
+              :
+              <>
+                {this.state.shoot ?
+                  <button onClick={this.shoot}>Shoot!</button>
+                  :
+                  <button>Don't Shoot</button>
                 }
               </>
             }
